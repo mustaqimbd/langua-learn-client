@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className='grid grid-cols-3 items-center py-5 bg-slate-300'>
+        <div className='grid grid-cols-3 items-center py-5 bg-blue-600'>
             <div className='flex items-center gap-5'>
                 <span>logo</span>
                 <h1 className='text-4xl font-bold'>LanguaLearn</h1>
