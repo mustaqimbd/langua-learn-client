@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useAxios from '../customHooks/useAxios';
 import Swal from 'sweetalert2';
@@ -8,14 +8,14 @@ import Swal from 'sweetalert2';
 const RegistrationForm = () => {
     const [instance] = useAxios()
     const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
-
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             name: '',
             email: '',
             password: '',
             confirmPassword: '',
-            photoUrl: '',
+            photoURL: '',
             gender: '',
             phoneNumber: '',
             address: '',
@@ -50,7 +50,7 @@ const RegistrationForm = () => {
         },
         onSubmit: (values, { resetForm }) => {
             console.log(values);
-            values.role = 'student';
+            values.role = 'Student';
             createUser(values.email, values.password)
                 .then(result => {
                     console.log(result.user);
@@ -67,6 +67,7 @@ const RegistrationForm = () => {
                                             showConfirmButton: false,
                                             timer: 1500
                                         })
+                                        navigate('/', { replace: true })
                                     }
                                 })
                                 .catch(err => {
@@ -88,7 +89,7 @@ const RegistrationForm = () => {
             .then((result) => {
                 console.log(result.user);
                 const { displayName, email, photoURL } = result.user;
-                instance.post('/user', { name: displayName, email, photoURL ,role:'student'})
+                instance.post('/user', { name: displayName, email, photoURL, role: 'Student' })
                     .then(res => {
                         if (res.data.insertedId) {
                             Swal.fire({
@@ -98,6 +99,7 @@ const RegistrationForm = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
+                            navigate('/', { replace: true })
                         }
                     })
                     .catch(err => {
@@ -187,8 +189,8 @@ const RegistrationForm = () => {
                         Photo URL:
                     </label>
                     <input
-                        id="photoUrl"
-                        name="photoUrl"
+                        id="photoURL"
+                        name="photoURL"
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.photoUrl}

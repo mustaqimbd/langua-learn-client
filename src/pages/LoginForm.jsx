@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useAxios from '../customHooks/useAxios';
 import Swal from 'sweetalert2';
@@ -8,7 +8,10 @@ import Swal from 'sweetalert2';
 const LoginForm = () => {
     const [instance] = useAxios()
     const { loginUser, googleSignIn } = useContext(AuthContext);
-
+    const navigate = useNavigate()
+    const location = useLocation()
+    const redirectTo = location.state?.pathname || '/';
+    
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -27,7 +30,7 @@ const LoginForm = () => {
             }
             return errors;
         },
-        onSubmit: (values,{ resetForm }) => {
+        onSubmit: (values, { resetForm }) => {
             console.log(values);
             loginUser(values.email, values.password)
                 .then(result => {
@@ -40,6 +43,7 @@ const LoginForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
+                    navigate(redirectTo, { replace: true })
                 })
                 .catch(err => {
                     console.log(err);
@@ -56,8 +60,7 @@ const LoginForm = () => {
 
     const handleGoogleSingIn = () => {
         googleSignIn()
-            .then((result) => {
-                console.log(result.user);
+            .then(() => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -65,6 +68,7 @@ const LoginForm = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate(redirectTo, { replace: true })
             })
             .catch(err => {
                 console.log(err);
