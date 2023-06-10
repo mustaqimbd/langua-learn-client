@@ -11,7 +11,6 @@ const UsersManage = () => {
     useEffect(() => {
         instance.get('/users')
             .then(result => {
-                console.log(result.data);
                 setUsers(result.data)
             })
             .catch(err => {
