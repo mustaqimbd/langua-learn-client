@@ -9,18 +9,19 @@ const AddAClass = () => {
     const { user } = useContext(AuthContext)
     const [instance] = useAxios()
     const [image, setImage] = useState('')
-
+    console.log(image);
 
     const initialValues = {
         className: '',
+        image: image?.name,
         instructorName: user.displayName || '',
         instructorEmail: user.email || '',
         availableSeats: '',
         price: '',
         status: 'Pending'
     };
-    
-    const onSubmit = (values) => {
+
+    const onSubmit = (values, { resetForm }) => {
         const image_hosting_token = import.meta.env.VITE_Image_upload_apiKey;
         const image_upload_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
         const formData = new FormData();
@@ -35,6 +36,9 @@ const AddAClass = () => {
                     instance.post('/newclass', values)
                         .then(data => {
                             if (data.data.insertedId) {
+                                setImage('')
+                                resetForm()
+                                console.log(image);
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
@@ -48,6 +52,7 @@ const AddAClass = () => {
             })
             .catch(err => { console.log(err) })
     };
+
     return (
         <div className="w-[95%] mx-auto">
             <h1 className='text-3xl font-bold text-center mt-6 mb-4'>Add a classes</h1>

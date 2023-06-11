@@ -9,6 +9,8 @@ import DashboardLayout from "../layout/DashboardLayout";
 import ClassesManage from "../pages/dashboard/admin/ClassesManage";
 import UsersManage from "../pages/dashboard/admin/UsersManage";
 import AddAClass from "../pages/dashboard/instructor/AddAClass";
+import Myclasses from "../pages/dashboard/instructor/Myclasses";
+import UpdateClass from "../pages/dashboard/instructor/UpdateClass";
 
 
 const router = createBrowserRouter([
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
             {
                 path: 'addaclass',
                 element: <AddAClass />
+            },
+            {
+                path: 'update-class/:id',
+                element: <UpdateClass />
+            },
+            {
+                path: 'my-classes',
+                element: <Myclasses />
             }
         ]
     }

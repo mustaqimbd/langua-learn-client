@@ -17,7 +17,7 @@ const useRole = () => {
                 console.log(err);
             });
     });
-    return [role];
+    return [role, user];
 };
 
 export default useRole;
