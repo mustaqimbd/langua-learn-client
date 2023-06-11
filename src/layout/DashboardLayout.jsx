@@ -22,8 +22,8 @@ const DashboardLayout = () => {
                     }
                     {role == 'Instructor' &&
                         <ul className='p-5 flex flex-col gap-5'>
-                            <li><NavLink>Instructor Home</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-classes'>Manage Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/addaclass'>Add a Class</NavLink></li>
+                            <li><NavLink to='/dashboard/my-classes'>My Classes</NavLink></li>
                             <li><NavLink to='/dashboard/manage-users'>Manage Users</NavLink></li>
                             <li><hr /></li>
                             <li><NavLink to='/'>Home</NavLink></li>

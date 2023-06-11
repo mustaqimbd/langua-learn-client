@@ -6,9 +6,9 @@ import RegistrationForm from "../pages/RegistrationForm";
 import LoginForm from "../pages/LoginForm";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../layout/DashboardLayout";
-import ClassesManage from "../pages/dashboard/ClassesManage";
-import UsersManage from "../pages/dashboard/UsersManage";
-
+import ClassesManage from "../pages/dashboard/admin/ClassesManage";
+import UsersManage from "../pages/dashboard/admin/UsersManage";
+import AddAClass from "../pages/dashboard/instructor/AddAClass";
 
 
 const router = createBrowserRouter([
@@ -42,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'manage-users',
                 element: <UsersManage />
+            },
+            {
+                path: 'addaclass',
+                element: <AddAClass />
             }
         ]
     }

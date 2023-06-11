@@ -11,7 +11,6 @@ const useRole = () => {
     useQuery('role', () => {
         instance.get(`/user-role/${user.email}`)
             .then(result => {
-                console.log(result.data);
                 setRole(result.data.role);
             })
             .catch(err => {
