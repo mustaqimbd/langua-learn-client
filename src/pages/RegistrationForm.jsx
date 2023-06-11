@@ -54,9 +54,18 @@ const RegistrationForm = () => {
             createUser(values.email, values.password)
                 .then(result => {
                     console.log(result.user);
-                    updateUserProfile(values.name, values.photoUrl)
+                    updateUserProfile(values.name, values.photoURL)
                         .then(() => {
-                            instance.post('/user', values)
+                            const user = {
+                                name: values.name,
+                                email: values.email,
+                                photoURL: values.photoURL,
+                                gender: values.gender,
+                                phoneNumber: values.phoneNumber,
+                                address: values.address,
+                                role: 'Student'
+                            }
+                            instance.post('/user', user)
                                 .then(res => {
                                     if (res.data.insertedId) {
                                         resetForm()

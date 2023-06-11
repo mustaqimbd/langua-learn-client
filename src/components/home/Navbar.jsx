@@ -29,7 +29,7 @@ const Navbar = () => {
             </div>
             <ul className='flex gap-10 justify-end text-lg font-bold col-span-2'>
                 <li><NavLink>Home</NavLink></li>
-                <li><NavLink>Instructors</NavLink></li>
+                <li><NavLink to='/instructors'>Instructors</NavLink></li>
                 <li><NavLink>Classes</NavLink></li>
                 <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
             </ul>
