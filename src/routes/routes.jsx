@@ -13,6 +13,7 @@ import Myclasses from "../pages/dashboard/instructor/Myclasses";
 import UpdateClass from "../pages/dashboard/instructor/UpdateClass";
 import Instructors from "../pages/Instructors";
 import Classes from "../pages/Classes";
+import Admin from "./Admin";
 
 
 const router = createBrowserRouter([
@@ -49,11 +50,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'manage-classes',
-                element: <ClassesManage />
+                element: <Admin><ClassesManage /></Admin>
             },
             {
                 path: 'manage-users',
-                element: <UsersManage />
+                element: <Admin><UsersManage /></Admin>
             },
             {
                 path: 'addaclass',

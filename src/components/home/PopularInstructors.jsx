@@ -13,7 +13,6 @@ const PopularInstructors = () => {
                 console.log(err);
             });
     }, [])
-    console.log(instructors);
     return (
         <div>
             <h1 className='text-center text-3xl font-bold mt-10 mb-4 '>Popular Instructors</h1>
