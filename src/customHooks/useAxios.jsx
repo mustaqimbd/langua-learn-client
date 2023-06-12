@@ -23,10 +23,9 @@ const useAxios = () => {
                 return Promise.reject(error);
             }
         );
-    }, [instance])
+    }, [instance]);
 
     return [instance]
 };
-
 
 export default useAxios;

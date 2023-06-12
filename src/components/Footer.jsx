@@ -2,14 +2,14 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="bg-blue-600">
+        <footer className="bg-[#132160] text-white">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <a href="https://flowbite.com/" className="flex items-center">
-                            <img src="https://w7.pngwing.com/pngs/397/294/png-transparent-tandem-language-learning-language-exchange-android-language-exchange.png" className="h-8 mr-3" alt=" Logo" />
-                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                        </a>
+                        <div className="flex items-center">
+                        <img className='w-10 h-10 rounded-full mx-2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKmuWkGsEwLup0TUSslEr86fVxf0tEjYw5A7VL9h9qYg&s" alt="" />
+                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LanguaLearn</span>
+                        </div>
                     </div>
                     <div>
                         <h2 className="text-center mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import useAxios from '../../../customHooks/useAxios';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -65,8 +64,8 @@ const Myclasses = () => {
                                 <div className='space-y-3'>
                                     <h1 className='text-2xl font-bold'>{className}</h1>
                                     <p>Price : $ {price}</p>
-                                    <p>AvailableSeats :  {availableSeats}</p>
-                                    <p>Total Enrolled Students : 0</p>
+                                    <p>Available seats :  {availableSeats}</p>
+                                    <p>Total enrolled students : 0</p>
                                     <Link to={`/dashboard/update-class/${_id}`}>
                                         <button className='bg-blue-600 px-4 py-1 text-lg font-bold rounded-md'>Update class</button>
                                     </Link>

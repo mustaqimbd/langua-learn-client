@@ -12,6 +12,7 @@ import AddAClass from "../pages/dashboard/instructor/AddAClass";
 import Myclasses from "../pages/dashboard/instructor/Myclasses";
 import UpdateClass from "../pages/dashboard/instructor/UpdateClass";
 import Instructors from "../pages/Instructors";
+import Classes from "../pages/Classes";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: 'instructors',
                 element: <Instructors />
+            },
+            {
+                path: 'classes',
+                element: <Classes />
             },
             {
                 path: 'login',

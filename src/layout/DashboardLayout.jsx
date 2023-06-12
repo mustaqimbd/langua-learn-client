@@ -1,23 +1,21 @@
-import React, { useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useRole from '../customHooks/useRole';
+import Navbar from '../components/home/navbar';
 
 const DashboardLayout = () => {
-    const [role] = useRole()
+    const { role } = useRole()
+    console.log(role);
     return (
         <div>
+            <Navbar />
             <div className='flex'>
                 <div className='w-[250px] bg-slate-400'>
 
                     {role == 'Student' &&
                         <ul className='p-5 flex flex-col gap-5'>
-                            <li><NavLink>Student Home</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-classes'>Manage Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-users'>Manage Users</NavLink></li>
-                            <li><hr /></li>
-                            <li><NavLink to='/'>Home</NavLink></li>
-                            <li><NavLink>Instructors</NavLink></li>
-                            <li><NavLink>Classes</NavLink></li>
+                            <li><NavLink to='/dashboard'>My Selected Classes</NavLink></li>
+                            <li><NavLink to='/dashboard'>My Enrolled Classes</NavLink></li>
+                            <li><NavLink to='/dashboard'>Payment</NavLink></li>
                         </ul>
                     }
                     {role == 'Instructor' &&
@@ -25,10 +23,7 @@ const DashboardLayout = () => {
                             <li>Instructor Home</li>
                             <li><NavLink to='/dashboard/addaclass'>Add a Class</NavLink></li>
                             <li><NavLink to='/dashboard/my-classes'>My Classes</NavLink></li>
-                            <li><hr /></li>
-                            <li><NavLink to='/'>Home</NavLink></li>
-                            <li><NavLink>Instructors</NavLink></li>
-                            <li><NavLink>Classes</NavLink></li>
+
                         </ul>
                     }
                     {role == 'Admin' &&
@@ -36,10 +31,6 @@ const DashboardLayout = () => {
                             <li><NavLink>Admin Home</NavLink></li>
                             <li><NavLink to='/dashboard/manage-classes'>Manage Classes</NavLink></li>
                             <li><NavLink to='/dashboard/manage-users'>Manage Users</NavLink></li>
-                            <li><hr /></li>
-                            <li><NavLink to='/'>Home</NavLink></li>
-                            <li><NavLink>Instructors</NavLink></li>
-                            <li><NavLink>Classes</NavLink></li>
                         </ul>
                     }
                 </div>
