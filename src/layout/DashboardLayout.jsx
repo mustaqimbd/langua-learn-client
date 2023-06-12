@@ -13,14 +13,14 @@ const DashboardLayout = () => {
 
                     {role == 'Student' &&
                         <ul className='p-5 flex flex-col gap-5'>
-                            <li><NavLink to='/dashboard'>My Selected Classes</NavLink></li>
-                            <li><NavLink to='/dashboard'>My Enrolled Classes</NavLink></li>
-                            <li><NavLink to='/dashboard'>Payment</NavLink></li>
+                            <li><NavLink to='/dashboard/selected/classes'>My Selected Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/Enrolled/classes'>My Enrolled Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/payment'>Payment</NavLink></li>
                         </ul>
                     }
                     {role == 'Instructor' &&
                         <ul className='p-5 flex flex-col gap-5'>
-                            <li>Instructor Home</li>
+                            <li><NavLink to='/dashboard/instructor'>Instructor Home</NavLink></li>
                             <li><NavLink to='/dashboard/addaclass'>Add a Class</NavLink></li>
                             <li><NavLink to='/dashboard/my-classes'>My Classes</NavLink></li>
 
@@ -28,7 +28,7 @@ const DashboardLayout = () => {
                     }
                     {role == 'Admin' &&
                         <ul className='p-5 flex flex-col gap-5'>
-                            <li><NavLink>Admin Home</NavLink></li>
+                            <li><NavLink to='/dashboard/home'>Admin Home</NavLink></li>
                             <li><NavLink to='/dashboard/manage-classes'>Manage Classes</NavLink></li>
                             <li><NavLink to='/dashboard/manage-users'>Manage Users</NavLink></li>
                         </ul>
