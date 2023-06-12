@@ -16,13 +16,13 @@ const HomeSlider = () => {
   return (
     <div>
       <Slider {...settings}>
-        <div className="h-[500px] relative">
+        <div className="h-[500px] relative ">
           <img
             src="https://img.freepik.com/premium-photo/front-view-alphabet-letters-stacked-books-earth-globe-education-day_23-2149241026.jpg?w=826"
             alt="Slide 1"
             className="w-full h-full object-cover"
           />
-          <div className="text-center absolute top-[50%] left-[10%] right-[10%]">
+          <div className="text-center text-[#132160] absolute top-[50%] left-[10%] right-[10%]">
             <h1 className="text-6xl font-bold">Welcome to LanguaLearn!</h1>
             <h3 className="text-2xl font-bold my-2">Master multiple languages with ease.</h3>
             <h3 className="text-2xl font-bold">Unlock your linguistic potential.</h3>
@@ -35,7 +35,7 @@ const HomeSlider = () => {
             alt="Slide 2"
             className="w-full h-full object-cover"
           />
-          <div className="text-center absolute top-[50%] left-[10%] right-[10%]">
+          <div className="text-center text-[#132160] absolute top-[50%] left-[10%] right-[10%]">
             <h1 className="text-6xl font-bold">Interactive Learning</h1>
             <h3 className="text-2xl font-bold my-2">Engaging lessons and interactive exercises.</h3>
             <h3 className="text-2xl font-bold">UPractice makes perfect.</h3>
@@ -47,7 +47,7 @@ const HomeSlider = () => {
             alt="Slide 3"
             className="w-full h-full object-cover"
           />
-          <div className="text-center absolute top-[50%] left-[10%] right-[10%]">
+          <div className="text-center text-[#132160] absolute top-[50%] left-[10%] right-[10%]">
             <h1 className="text-6xl font-bold">Expand Your Horizons!</h1>
             <h3 className="text-2xl font-bold my-2">Learn languages from around the world.</h3>
             <h3 className="text-2xl font-bold">Discover new cultures and perspectives.</h3>
@@ -59,7 +59,7 @@ const HomeSlider = () => {
             alt="Slide 4"
             className="w-full h-full object-cover"
           />
-          <div className="text-center absolute top-[50%] left-[10%] right-[10%]">
+          <div className="text-center text-[#132160] absolute top-[50%] left-[10%] right-[10%]">
             <h1 className="text-6xl font-bold">Personalized Approach</h1>
             <h3 className="text-2xl font-bold my-2">Tailored learning paths for your goals.</h3>
             <h3 className="text-2xl font-bold">Learn at your own pace.</h3>

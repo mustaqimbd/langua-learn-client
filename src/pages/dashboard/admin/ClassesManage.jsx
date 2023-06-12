@@ -48,7 +48,7 @@ const ClassesManage = () => {
                         const { _id, className, image, instructorName, instructorEmail, price, availableSeats, status } = singleClass;
                         return (
                             <div key={singleClass._id} className='flex flex-cols-3 gap-5 mb-10 bg-slate-200 rounded'>
-                                <div className='h-[200px] w-[20%]my-auto'><img className='w-full h-full rounded' src={image} alt="" /></div>
+                                <div className='w-[20%]my-auto'><img className='h-[200px] w-[200px] object-cover rounded' src={image} alt="" /></div>
                                 <div className='space-y-3 w-[40%]'>
                                     <h1 className='text-2xl font-bold'>Class : {className}</h1>
                                     <p>Price : $ {price}</p>
