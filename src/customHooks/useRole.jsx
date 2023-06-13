@@ -6,19 +6,15 @@ import { useQuery } from 'react-query';
 const useRole = () => {
     const { user } = useContext(AuthContext);
     const [instance] = useAxios();
-
-    const { data: role, isLoading, isError } = useQuery("role",
+    const { data, isLoading, isError,refetch } = useQuery("role",
         async () => {
             const response = await instance.get(`/user-role/${user?.email}`);
-            return response.data.role;
+            return response.data;
         });
     useEffect(() => {
-        if (!isLoading && !isError) {
-            console.log('use role', role);
-        }
-    }, [isLoading, isError, role]);
-    console.log(role);
-    return { role, isLoading, isError };
+    }, [isLoading, isError, data]);
+
+    return { role: data?.role, user: data,isLoading, isError,refetch };
 };
 
 export default useRole;

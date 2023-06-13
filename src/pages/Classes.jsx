@@ -2,12 +2,15 @@ import { useContext, useEffect, useState } from 'react';
 import useAxios from '../customHooks/useAxios';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useRole from '../customHooks/useRole';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Classes = () => {
     const [instance] = useAxios()
     const [totalClass, setTotalClass] = useState([])
     const { user } = useContext(AuthContext)
     const { role, isLoading } = useRole()
+    const navigate = useNavigate()
 
     useEffect(() => {
         instance.get(`/all-classes`, { params: { status: 'Approved' } })
@@ -18,7 +21,41 @@ const Classes = () => {
                 console.log(err);
             });
     }, [])
-    console.log(totalClass, role, isLoading);
+
+    const redirectToLogin = () => {
+        Swal.fire({
+            title: 'Please Login to select this class.',
+            text: "You have to login first to select a class.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Login'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/login', { replace: true })
+            }
+        })
+
+    }
+    const select = async (id) => {
+        instance.patch(`/selected-classes/${user.email}`, { id: id })
+            .then(result => {
+               if(result.data.modifiedCount>0){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successfully selected this class.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+               }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     return (
         <div>
             {
@@ -48,18 +85,18 @@ const Classes = () => {
                                             <p className=' font-bold'>Instructor : {instructorName}</p>
                                             <p> Available seats :  <span className='font-bold'>{availableSeats}</span></p>
                                         </div>
-                                        <div className="p-6 pt-0">
+                                        <div className="p-6 pt-0 text-white">
                                             {
-                                                user && role != 'Admin' && role != 'Instructor' && <button
-                                                    className="block bg-blue-500 w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
+                                                user && role != 'Admin' && role != 'Instructor' && <button onClick={() => select(_id)}
+                                                    className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
                                                     User
                                                 </button>
                                             }
                                             {
-                                                !user && < button
-                                                    className="block bg-blue-500 w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
+                                                !user && < button onClick={redirectToLogin}
+                                                    className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
                                                     not user
@@ -67,7 +104,7 @@ const Classes = () => {
                                             }
                                             {
                                                 user && role == 'Admin' || role == "Instructor" && <button disabled
-                                                    className="block bg-blue-500 w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
+                                                    className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
                                                     admin or instructor
