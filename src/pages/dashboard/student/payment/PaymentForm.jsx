@@ -52,7 +52,6 @@ const PaymentForm = ({ clientSecret }) => {
     }
     
     if (paymentIntent.status === 'succeeded') {
-        console.log(paymentIntent);
       Swal.fire({
         position: 'top-end',
         icon: 'success',

@@ -217,7 +217,7 @@ const AddAClass = () => {
                     <div className='flex items-center col-span-2'>
                         <button
                             type="submit"
-                            className="h-[40px] w-[200px] mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="h-[40px] w-[200px] mx-auto bg-[#132160] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         >
                             Add
                         </button>

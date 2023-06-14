@@ -59,12 +59,12 @@ const ClassesManage = () => {
                                 <div className="w-[40%] flex flex-col justify-evenly">
                                     <p className='text-center my-2'><span className='font-bold'>Status :</span> {status}</p>
                                     <div className="flex justify-evenly">
-                                        <button onClick={() => changeStatus(_id, 'Approved')} disabled={status == 'Approved' || status == 'Denied' ? true : false} className="bg-blue-600 px-4 py-1 text-lg font-bold rounded-md">Approve</button>
+                                        <button onClick={() => changeStatus(_id, 'Approved')} disabled={status == 'Approved' || status == 'Denied' ? true : false} className="bg-[#132160] text-white px-4 py-1 text-lg font-bold rounded-md">Approve</button>
 
-                                        <button onClick={() => changeStatus(_id, 'Denied')} disabled={status == 'Approved' || status == 'Denied' ? true : false} className={`bg-red-600 px-4 py-1 text-lg font-bold rounded-md`}>Deny</button>
+                                        <button onClick={() => changeStatus(_id, 'Denied')} disabled={status == 'Approved' || status == 'Denied' ? true : false} className={`text-white bg-red-600 px-4 py-1 text-lg font-bold rounded-md`}>Deny</button>
                                     </div>
                                    
-                                    <p className='text-center text-lg font-bold'>Feedback </p>
+                                    <p className='text-center text-lg font-bold cursor-pointer'>Feedback </p>
                                 </div>
                             </div>
                         );

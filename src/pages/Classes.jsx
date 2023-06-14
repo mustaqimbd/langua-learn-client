@@ -41,15 +41,15 @@ const Classes = () => {
     const select = async (id) => {
         instance.patch(`/selected-classes/${user.email}`, { id: id })
             .then(result => {
-               if(result.data.modifiedCount>0){
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Successfully selected this class.',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-               }
+                if (result.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Successfully selected this class.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             })
             .catch(err => {
                 console.log(err);
@@ -91,7 +91,7 @@ const Classes = () => {
                                                     className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
-                                                    User
+                                                    Select
                                                 </button>
                                             }
                                             {
@@ -99,7 +99,7 @@ const Classes = () => {
                                                     className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
-                                                    not user
+                                                    Select
                                                 </button>
                                             }
                                             {
@@ -107,7 +107,7 @@ const Classes = () => {
                                                     className="block bg-[#132160] w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
                                                     type="button"
                                                 >
-                                                    admin or instructor
+                                                    Select
                                                 </button>
                                             }
                                         </div>

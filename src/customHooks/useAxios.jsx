@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-const useAxios = () => {
-    const instance = axios.create({
-        baseURL: 'http://localhost:5000',
+const instance = axios.create({
+        baseURL: 'https://langua-learn-server.vercel.app',
     });
 
+const useAxios = () => {
+    
     useEffect(() => {
         instance.interceptors.request.use(
             config => {
@@ -23,7 +24,7 @@ const useAxios = () => {
                 return Promise.reject(error);
             }
         );
-    }, [instance]);
+    }, []);
 
     return [instance]
 };

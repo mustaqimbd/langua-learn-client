@@ -3,6 +3,7 @@ import useAxios from '../../../customHooks/useAxios';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const Myclasses = () => {
     const { user } = useContext(AuthContext)
@@ -66,10 +67,12 @@ const Myclasses = () => {
                                     <p>Price : $ {price}</p>
                                     <p>Available seats :  {availableSeats}</p>
                                     <p>Total enrolled students : 0</p>
-                                    <Link to={`/dashboard/update-class/${_id}`}>
-                                        <button className='bg-blue-600 px-4 py-1 text-lg font-bold rounded-md'>Update class</button>
-                                    </Link>
-                                    <button onClick={() => handleDelete(_id)} className='bg-blue-600 px-4 py-1 text-lg font-bold rounded-md'>Delete class</button>
+                                    <div className='flex justify-between'>
+                                        <Link to={`/dashboard/update-class/${_id}`}>
+                                            <button className='bg-[#132160] text-white px-4 py-1 text-lg font-bold rounded-md'>Update class</button>
+                                        </Link>
+                                        <button onClick={() => handleDelete(_id)} className='text-red-600 px-4 py-1 text-lg font-bold rounded-md'><FaTrashAlt /></button>
+                                    </div>
                                 </div>
                                 <div>
                                     <p className='text-center my-2'><span className='font-bold'>Status :</span> {status}</p>

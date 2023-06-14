@@ -38,10 +38,10 @@ const Navbar = () => {
                 <div className='flex'>
                     {user && !loading ?
                         <div className='flex items-center gap-5 ml-auto'>
-                            <span title={user.displayName} className='ml-auto'><img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" /></span> <button onClick={handleLogOut} className='px-4 py-2 bg-red-400 text-lg font-bold rounded-md'>Sing out</button>
+                            <span title={user.displayName} className='ml-auto'><img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" /></span> <button onClick={handleLogOut} className='px-4 py-2 hover:bg-gray-700 text-lg font-bold rounded-md'>Sing out</button>
                         </div>
                         : !loading &&
-                        <Link to='/login' className='ml-auto px-4 py-2 bg-red-400 text-lg font-bold rounded-md'>Login</Link>
+                        <Link to='/login' className='ml-auto px-4 py-2 hover:bg-gray-700 text-lg font-bold rounded-md'>Login</Link>
                     }
 
                 </div>

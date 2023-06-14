@@ -119,14 +119,14 @@ const LoginForm = () => {
                 <div className='col-span-2 text-center'>
                     <button
                         type="submit"
-                        className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 w-[200px] rounded focus:outline-none focus:shadow-outline"
+                        className="bg-[#132160] text-white font-bold py-2 px-4 w-[100px] rounded focus:outline-none focus:shadow-outline"
                     >
                         Login
                     </button>
                 </div>
             </form>
             <div className='text-center mb-14'>
-                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-blue-700 py-2 px-4 mb-2 rounded w-[200px]'>Log in with google</button>
+                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-[#132160] text-white  py-2 px-4 mb-2 rounded w-[200px]'>Log in with google</button>
                 <p>Already have an account? <Link to='/registration' className='text-lg font-bold text-blue-700'>Please Registration</Link></p>
             </div>
         </div>
