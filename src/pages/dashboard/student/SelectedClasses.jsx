@@ -3,13 +3,14 @@ import useRole from '../../../customHooks/useRole';
 import useAxios from '../../../customHooks/useAxios';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-
+import { Link } from 'react-router-dom';
+export let totalPrice;
 
 const SelectedClasses = () => {
     const [instance] = useAxios()
     const { user, refetch } = useRole();
     const selectedClasses = user?.selectedClasses;
-    const [classes, setClasses] = useState()
+    const [classes, setClasses] = useState([])
 
     useEffect(() => {
         instance.get(`/selected-classes`, { params: { selectedClasses: selectedClasses } })
@@ -51,11 +52,18 @@ const SelectedClasses = () => {
             }
         })
     }
+    const sum = classes.reduce((sum, items) => {
+        return sum + parseFloat(items.price)
+    }, 0)
+    totalPrice = sum
     return (
         <div>
             {
                 classes && <>
-
+                    <div className='flex justify-evenly items-center mt-5 mb-3'>
+                        <h1 className='text-xl font-bold'>Total selected Items : {classes.length} </h1>
+                        <h1 className='text-xl font-bold'>Total Amount : $ {sum}</h1>
+                    </div>
                     <div className='grid grid-cols-3 gap-5'>
                         {classes.map(oneClass => {
                             const { _id, className, image, instructorName, price, availableSeats, } = oneClass;
@@ -79,26 +87,26 @@ const SelectedClasses = () => {
                                         <p className=' font-bold'>Instructor : {instructorName}</p>
                                         <p> Available seats :  <span className='font-bold'>{availableSeats}</span></p>
                                     </div>
-                                    <div className="p-6 pt-0 text-white flex justify-between items-center">
+                                    <div className="p-6 pt-0 text-white flex justify-center items-center">
                                         < button onClick={() => handleDelete(_id)}
                                             className="text-red-600 select-none rounded-lg text-center align-middle text-lg font-bold uppercase text-blue-gray-900 "
                                             type="button"
                                         >
                                             <FaTrashAlt />
                                         </button>
-                                        < button
-                                            className="bg-[#132160] select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
-                                            type="button"
-                                        >
-                                            Pay
-                                        </button>
+
                                     </div>
                                 </div>
                             )
                         })
                         }
                     </div>
-
+                    <div className='flex justify-center items-center my-10'>
+                        <Link to='/dashboard/payment' className="text-white block bg-[#132160] w-[200px] select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 "
+                        >
+                            Payment
+                        </Link>
+                    </div>
                 </>
             }
             {classes == "undefined" && < h1 > Loading...</h1>}

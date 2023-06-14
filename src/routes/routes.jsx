@@ -17,6 +17,7 @@ import Admin from "./Admin";
 import Instructor from "./Instructor";
 import InstructorHome from "../pages/dashboard/instructor/instructorHome";
 import SelectedClasses from "../pages/dashboard/student/SelectedClasses";
+import MakePayment from "../pages/dashboard/student/payment/MakePayment";
 
 
 const router = createBrowserRouter([
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
             {
                 path: 'selected/classes',
                 element: <SelectedClasses />
+            },
+            {
+                path: 'payment',
+                element: <MakePayment />
             }
         ]
     }

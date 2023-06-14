@@ -4,7 +4,6 @@ import Navbar from '../components/home/navbar';
 
 const DashboardLayout = () => {
     const { role } = useRole()
-    console.log(role);
     return (
         <div>
             <Navbar />
