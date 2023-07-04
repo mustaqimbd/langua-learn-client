@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useAxios from '../customHooks/useAxios';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 
 const RegistrationForm = () => {
     const [instance] = useAxios()
@@ -287,8 +288,8 @@ const RegistrationForm = () => {
                 </div>
             </form>
             <div className='text-center mb-5'>
-                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-[#132160] text-white  py-2 px-3 mb-2 rounded w-[300px]'>Registration with google</button>
-                <p>Already have an account? <Link to='/login' className='text-lg font-bold text-blue-700'>Please Login</Link></p>
+                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-[#132160] text-white flex items-center gap-1 py-2 px-3 mb-2 rounded w-[300px] mx-auto'><FcGoogle /> Registration with google</button>
+                <p>Already have an account? Please <Link to='/login' className='text-lg font-bold text-blue-700'>Login</Link></p>
             </div>
         </div>
     );

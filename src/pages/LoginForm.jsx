@@ -1,17 +1,22 @@
 import { useFormik } from 'formik';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import useAxios from '../customHooks/useAxios';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 
 const LoginForm = () => {
-    const [instance] = useAxios()
     const { loginUser, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
     const redirectTo = location.state?.pathname || '/';
-    
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -97,7 +102,7 @@ const LoginForm = () => {
 
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 relative">
                     <label
                         htmlFor="password"
                         className="block text-gray-700 font-bold mb-2"
@@ -107,11 +112,17 @@ const LoginForm = () => {
                     <input
                         id="password"
                         name="password"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         onChange={formik.handleChange}
                         value={formik.values.password}
                         className="appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
+                    <span
+                        className="absolute top-10 right-4 cursor-pointer"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                    </span>
                     {formik.errors.password ? <div className="text-red-600">{formik.errors.password}</div> : null}
 
                 </div>
@@ -126,8 +137,8 @@ const LoginForm = () => {
                 </div>
             </form>
             <div className='text-center mb-14'>
-                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-[#132160] text-white  py-2 px-4 mb-2 rounded w-[200px]'>Log in with google</button>
-                <p>Already have an account? <Link to='/registration' className='text-lg font-bold text-blue-700'>Please Registration</Link></p>
+                <button onClick={handleGoogleSingIn} className='text-lg font-bold bg-[#132160] text-white flex items-center gap-1  py-2 px-4 mb-2 rounded w-[220px] mx-auto'><FcGoogle />Log in with google</button>
+                <p>Don&apos;t have an account? Please <Link to="/registration" className="text-lg font-bold text-blue-700">Registration</Link></p>
             </div>
         </div>
     );

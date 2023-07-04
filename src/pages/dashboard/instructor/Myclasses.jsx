@@ -4,6 +4,7 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
+import { update } from './UpdateClass';
 
 const Myclasses = () => {
     const { user } = useContext(AuthContext)
@@ -19,7 +20,7 @@ const Myclasses = () => {
             .catch(err => {
                 console.log(err);
             });
-    }, [refetch])
+    }, [instance, user.email, refetch])
     console.log(classes);
 
     const handleDelete = (id) => {
@@ -69,13 +70,13 @@ const Myclasses = () => {
                                     <p>Total enrolled students : 0</p>
                                     <div className='flex justify-between'>
                                         <Link to={`/dashboard/update-class/${_id}`}>
-                                            <button className='bg-[#132160] text-white px-4 py-1 text-lg font-bold rounded-md'>Update class</button>
+                                            <button onClick={() => update(myClass)} className='bg-[#132160] text-white px-4 py-1 text-lg font-bold rounded-md'>Update class</button>
                                         </Link>
                                         <button onClick={() => handleDelete(_id)} className='text-red-600 px-4 py-1 text-lg font-bold rounded-md'><FaTrashAlt /></button>
                                     </div>
                                 </div>
                                 <div>
-                                    <p className='text-center my-2'><span className='font-bold'>Status :</span> {status}</p>
+                                    <p className='text-center font-bold my-2'>Status : <span className={`font-normal ${status === "Approved" && 'text-green-600'} ${status === "Deny" && 'text-red-600'}`}>{status}</span> </p>
                                     <p className='text-center text-lg font-bold'>Feedback </p>
                                 </div>
                             </div>

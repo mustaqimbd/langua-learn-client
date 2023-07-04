@@ -15,7 +15,6 @@ import Instructors from "../pages/Instructors";
 import Classes from "../pages/Classes";
 import Admin from "./Admin";
 import Instructor from "./Instructor";
-import InstructorHome from "../pages/dashboard/instructor/instructorHome";
 import SelectedClasses from "../pages/dashboard/student/SelectedClasses";
 import MakePayment from "../pages/dashboard/student/payment/MakePayment";
 import Student from "./Student";
@@ -63,24 +62,22 @@ const router = createBrowserRouter([
                 path: 'manage-users',
                 element: <Admin><UsersManage /></Admin>
             },
+            //instructor routes
             {
-                path: 'instructor',
-                element: <Instructor> <InstructorHome /></Instructor>
+                path: 'my-classes',
+                element: <Instructor><Myclasses /></Instructor>
             },
             {
-                path: 'addaclass',
+                path: 'add-a-class',
                 element: <Instructor><AddAClass /></Instructor>
             },
             {
                 path: 'update-class/:id',
                 element: <Instructor><UpdateClass /></Instructor>
             },
+            //students routes
             {
-                path: 'my-classes',
-                element: <Instructor><Myclasses /></Instructor>
-            },
-            {
-                path: 'selected/classes',
+                path: 'selected-classes',
                 element: <Student><SelectedClasses /></Student>
             },
             {
